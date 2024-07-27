@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
+    <script src="./components/movement.js"></script>
+    <script>
+        var throttle=0
+    </script>
+
+    <link rel="stylesheet" href="./style.css"></link>
+    <a-frame>
+
+        <a-scene>
+                <a-assets>
+                    <a-asset-item id="plane" src="./assets/super_tucano_fab/scene.gltf"></a-asset-item>
+                </a-assets>            
+            <a-entity position="0 0 0"  >
+
+
+                <a-entity camera  position="0 6 2"  cursor="rayOrigin: mouse" >
+                    <a-entity id="airplane" gltf-model="#plane" position="0 -3 -2" shadow="cast: true; receive: false" movement></a-entity> 
+                    <a-entity  position="0 0 -0.5" htmlembed look-at="[camera]" throttle>
+                        <div id="screen">    
+                            
+                            <div id="box">
+                                <div id="indicator"></div>
+                            </div>
+                            <script src="./components/throttle.js"></script>
+                        </div>
+                    </a-entity>   
+                </a-entity>
+              </a-entity>
+
+                <a-plane
+                id="ground"
+                position="0 0 -20"
+                rotation="-90 0 0"
+                static-body
+                src="./assets/artificial-green-grass.jpg"
+                height="500"
+                width="500"
+                visible="true"
+                shadow="cast: false; receive: true"
+                repeat="40 50"
+            ></a-plane>
+
+
+
+
+            <a-sky color="#87ceeb"></a-sky>
+        </a-scene>
+
+    </a-frame>
+
+</html>
+
+
+            
